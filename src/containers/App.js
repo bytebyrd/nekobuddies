@@ -3,6 +3,7 @@ import './App.css';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from "../components/Scroll";
+import ErrorBoundary from "../components/ErrorBoundary";
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -27,13 +28,15 @@ class App extends React.Component {
         const { robots, searchTerm } = this.state;
         return !robots.length
             ?
-            <h1 className="tc">Loading</h1> 
+            <h1 className="tc">Loading</h1>
             :
             <div className="App tc">
                 <h1 className="f1 ma0 pa2">Nekobuddies</h1>
                 <SearchBox onSearchTermChange={this.setSearchTerm} />
                 <Scroll>
-                    <CardList robots={robots} filter={searchTerm} />
+                    <ErrorBoundary>
+                        <CardList robots={robots} filter={searchTerm} />
+                    </ErrorBoundary>
                 </Scroll>
             </div>
     }
