@@ -1,0 +1,8 @@
+.card{
+    cursor: pointer;
+}
+
+.card__image{
+    border-radius: 50%;
+    background-color: #28242B; 
+}
