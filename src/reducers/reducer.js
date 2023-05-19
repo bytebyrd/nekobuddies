@@ -3,13 +3,26 @@ const initialState = {
     searchTerm: "",
 }
 
+const initialRobotState = {
+    robots: []
+}
+
 function searchFieldReducer(state = initialState, action ={}){
     switch(action.type){
         case SET_SEARCH_TERM:
-            return { searchTerm: action.payload }
+            return { ...state, searchTerm: action.payload }
         default: 
          return state;
     }
 }
 
-export { searchFieldReducer }
+function robotReducer(state = initialRobotState, action ={}){
+    switch (action.type){
+        case "SET_ROBOTS":
+            return { ...state, robots: action.payload }
+        default:
+            return state;
+    }
+}
+
+export { searchFieldReducer, robotReducer }

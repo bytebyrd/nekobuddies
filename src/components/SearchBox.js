@@ -1,6 +1,8 @@
 import React from 'react';
-
+import { useDispatch } from 'react-redux';
+import { setSearchTerm } from '../actions/actions';
 const SearchBox = (props) => {
+    const dispatch = useDispatch()
     return (
         <div className='pa2'>
             <input
@@ -8,7 +10,8 @@ const SearchBox = (props) => {
                 type="search"
                 placeholder='search robot'
                 onChange={(e) => {
-                    props.onSearchTermChange(e.target.value)
+                     dispatch(setSearchTerm(e.target.value))
+                    // props.onSearchTermChange(e.target.value)
                 }}>
             </input>
         </div>
